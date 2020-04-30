@@ -11,7 +11,7 @@ public function DeleteCartProduct ( $varval ) {
   unset($_SESSION['CART'][$varval]);
   }
 
-/* reset session cart */
+/* reset cart products */
 public function ResetCart () {
   $_SESSION['CART'] = array();
 }
