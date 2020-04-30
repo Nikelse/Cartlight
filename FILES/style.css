@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 * { margin: 0.25em; }
 
@@ -6,6 +7,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
     color: #555;
+    margin-top: 130px;
 }
 
 h1 {
@@ -22,8 +24,12 @@ input {
   border-radius: 2px;
   cursor: pointer;
   height: 2em;
-  font-size: 1em;
+  font-size: 1.5em;
   vertical-align: middle;
+  background-color: #65b;
+  color: #eee;
+  border-radius: 4px;
+  padding: 0 20px;
 }
 
 input[type=number] {
@@ -87,4 +93,60 @@ overflow-wrap: break-word;
 
 .right {
   text-align: right;
+}
+
+.success {
+  padding: 0 .25em;
+  background-color: #bf6;
+  border-radius: 4px;
+}
+
+.alert {
+  padding: 0 .25em;
+  background-color: #fdc;
+  border-radius: 4px;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: middle;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#navbar {
+  margin: 0;
+  overflow: hidden;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid #555;
+}
+
+@media screen and (max-width: 780px) {
+
+  body {
+  margin-top: 160px;
+  }
+
+  #navbar {
+    font-size: .75em;
+  }
+
 }

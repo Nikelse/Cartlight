@@ -1,4 +1,4 @@
-/* eShopCart - Javascript source
+/* eShopCart - Javascript module
 * author @NikelseDev */
 
 $(document).ready(function(){
@@ -18,6 +18,7 @@ $(document).ready(function(){
 
          success : function(output, statut) {
            $("#cartstats").text(output);
+           AnimCart("#cartsection");
          },
 
          error : function(result, statut, error) {},
@@ -25,4 +26,10 @@ $(document).ready(function(){
       });
 
   });
+
+  function AnimCart (id) {
+    $( id ).toggle( "fast" );
+    $( id ).toggle( "fast" );
+  }
+
 });
