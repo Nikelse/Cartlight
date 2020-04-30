@@ -19,7 +19,6 @@ v1.1 :
 - material icon webkit import
 - improved webkit lisibility
 - cart adding product animation
-- reservation with reception
 
 ### Todo
 - modify quantity in the Manager
