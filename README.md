@@ -6,10 +6,9 @@ Cart management - on the fly - with no database and no authentification
 - Place order save and export on the disk and/or via email options
 
 ### Requirement
-- Backend : PHP 7.2 / Apache
-- Frontend : jQuery / Ajax / CSS3
+- Server side : PHP 7.2 / Apache
 
-### Configuration set up
+### Configuration Set up
 - CONFIG/config.inc.php (set up for the server)
 - CONFIG/objects.csv (contain datas see example file structure in project )
 
