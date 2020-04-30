@@ -19,6 +19,7 @@ public function ResetCart () {
 /* export id and quantity into csv file for further implementation */
 public function ExportCartData () {
   $csv_data = null;
+  /* formatting csv datas */
   foreach ($_SESSION['CART'] as $ROW) {
     $csv_data .= strval($ROW['id-product']) . ";" . strval($ROW['qty-product']) . "\r\n";
     }
