@@ -30,11 +30,10 @@ if ( !isset($_SESSION['CART']) ) { $_SESSION['CART'] = array(); }
 
 /* ajax injection in the cart session */
 if (isset($_GET['cart-module'])) {
-  require_once( _SOURCES_ . "/cart-module.class.php" );
+  require_once( _SOURCES_ . "/cart-module.ajax.php" );
   }
 else if (isset($_GET['cart-manager'])) {
-  require_once("webkit-manager.class.php");
-  require_once( _SOURCES_ . "/cart-manager.class.php" );
+  require_once( _SOURCES_ . "/cart-manager.controller.php" );
   }
 
 /* DEMONSTRATION loading default package for example of use

@@ -4,47 +4,43 @@
 
 class CartManager {
 
-public function __construct ( $vars ) {
-  $this->ActionManager( $vars );
-  }
-
-private function ActionManager ( $vars ) {
-  if ( isset($vars['delpdt']) && is_numeric($vars['delpdt'])
-  && array_key_exists($vars['delpdt'], $_SESSION['CART']) ) {
-      $this->DeleteCartProduct( $vars['delpdt'] );
-    }
-  else if (isset($vars['placeorder'])) {
-    $this->ExportCartData();
-    }
-  }
+public function __construct ( ) { }
 
 /* remove item from cart */
-private function DeleteCartProduct ( $varval ) {
+public function DeleteCartProduct ( $varval ) {
   unset($_SESSION['CART'][$varval]);
   }
 
-private function ExportCartData () {
+/* reset session cart */
+public function ResetCart () {
+  $_SESSION['CART'] = array();
+}
+
+/* export id and quantity into csv file for further implementation */
+public function ExportCartData () {
   $csv_data = null;
   foreach ($_SESSION['CART'] as $ROW) {
     $csv_data .= strval($ROW['id-product']) . ";" . strval($ROW['qty-product']) . "\r\n";
     }
   $date = new DateTime();
-  $hash = hash('md5',$csv_data);
-  $filename = "Order-".$date->format('Y-m-d-H-i-s')."-".$hash.".csv";
+  $rand = null;
+
+  /* ticket generator used for command and salt hash */
+  for ($x=0;$x<=4;$x++) $rand.=chr(97 + mt_rand(0, 25));
+  /* hash to generate unique file name */
+  $hash = hash('md5',$csv_data.$rand);
+  $filename = "Order-".$date->format('Y-m-d-H-i-s')."-".$hash."-".$rand.".csv";
   file_put_contents($GLOBALS['CONFIG']['Export_Path'].$filename, $csv_data);
+
+  return $rand;
   }
 
-private function ExportJsonOrderData () {
+/* export Json */
+public function ExportJsonOrderData () {
   $json_data = json_encode($_SESSION['CART']);
   file_put_contents('myfile.json', $json_data);
   }
 
 }
-
-/* controler */
-
-new CartManager( $_GET );
-
-new WebkitManager( $DATAS, $_SESSION['CART'] );
 
 ?>
