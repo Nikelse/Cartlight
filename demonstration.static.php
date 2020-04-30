@@ -1,5 +1,6 @@
 <?php
 /* eShopCart - Demonstration of use and easy integration
+* listing of product file with components
 * lightly templated for best comprehension
 * author @NikelseDev */
 
@@ -7,24 +8,27 @@ class Demonstration {
 
 public static function CreateObjectListForm ( $objects ) {
 
-  $form = "<!doctype html>
+  $form = "
+  <!doctype html>
   <html>
     <head>
-      <title> ".$GLOBALS['CONFIG']['WebName']." &bull; Product object list demonstration</title>
+      <title> ".$GLOBALS['CONFIG']['WebName']." &bull; Product list demonstration</title>
       <link href='"._FILES_."/style.css' type='text/css' rel='stylesheet' />
     </head>
   <body>
 
-  <div class='container'>
+  <div class='container' id ='navbar'>
+
     <div class='box two'>
-      <h1><a href='".$GLOBALS['CONFIG']['WebSiteUrl']."'>".$GLOBALS['CONFIG']['WebName']."</a> &bull; Product object list demonstration</h1>
+      <h1><a href='".$GLOBALS['CONFIG']['WebSiteUrl']."'>".$GLOBALS['CONFIG']['WebName']."</a> &bull; Product list demonstration</h1>
       <i>Simply select product and quantity to add in your cart :</i>
     </div>
-    <div class='box right'>
-      <h1><a href='?cart-manager'>MY CART </a>(<span name='cartstats' id='cartstats'>".sizeof($_SESSION['CART'])."</span>)</h1>
+
+    <div id='cartsection' class='box right'>
+      <h1><a href='?cart-manager'><i class='material-icons'>shopping_cart</i> MY CART </a>(<span name='cartstats' id='cartstats'>".sizeof($_SESSION['CART'])."</span>)</h1>
     </div>
+
   </div>
-  <hr />
 
   <div class='container'>";
 

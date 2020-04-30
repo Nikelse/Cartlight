@@ -8,13 +8,8 @@ class WebkitManager {
 
 public $money = null;
 
-public function __construct ( $datas_product, $datas_cart ) {
-
+public function __construct () {
   $this->money = $GLOBALS['PRODUCT']['Money_Symbol'];
-  $this->StartHTML();
-  $this->ShowCartDetails( $datas_product, $datas_cart );
-  $this->EndHTML();
-
 }
 
 /* begin output for header html document */
@@ -27,17 +22,20 @@ public function StartHTML () {
       <link href='"._FILES_."/style.css' type='text/css' rel='stylesheet' />
     </head>
   <body>
-  <div class='container'>
+  <div id='navbar' class='container'>
     <div class='box'>
       <h1><a href='".$GLOBALS['CONFIG']['WebSiteUrl']."'>".$GLOBALS['CONFIG']['WebName']."</a> &bull; Cart Management</h1>
-      <i>Verify your command and place order for reservation :</i>
+      <span class='material-icons'>done</span> <i>Confirm your cart list of product and place order for reservation :</i>
     </div>
-  </div>
-  <hr />";
+    <div id='cartsection' class='box right'>
+      <h1><i class='material-icons'>shopping_cart</i> MY CART (<span name='cartstats' id='cartstats'>".sizeof($_SESSION['CART'])."</span>)</h1>
+    </div>
+  </div>";
 }
 
 /* list of product file extract */
 public function ShowCartDetails ( $datas_product, $datas_cart ) {
+
   $TOTAL = 0.0;
 
   $out = null;
@@ -49,7 +47,9 @@ public function ShowCartDetails ( $datas_product, $datas_cart ) {
     $out .= "
     <div class='container col'>
       <div class='box'>
-        <h2>&bull; ".$PRODUCT[1]." : <a href='?cart-manager&delpdt=$K'>X</a></h2>
+        <h2>&bull; ".$PRODUCT[1]." :
+          <a href='?cart-manager&delpdt=$K'><span class='material-icons' title='remove item'>delete_forever</span></a>
+        </h2>
       </div>
       <div class='box right'>
         <h2><i>".$V['qty-product']." x "
@@ -62,7 +62,7 @@ public function ShowCartDetails ( $datas_product, $datas_cart ) {
     }
 
   $top = "
-  <div class='box col2 right'>
+  <div class='box right'>
     <h1>TOTAL = ".number_format($TOTAL,2)."$this->money</h1>
   </div>
   ";
@@ -81,7 +81,7 @@ public function FormCommand () {
   return "
   <form method='get' action=''>
 
-  <hr /><h1>Place order to validate reservation :</h1>
+  <hr /><h1><span class='material-icons'>thumb_up</span> Place order to validate reservation :</h1>
   <div class='container'>
 
     ".((!$GLOBALS['CONFIG']['ExportMail'])?null:"
@@ -97,6 +97,24 @@ public function FormCommand () {
   </div>
 
   </form>";
+}
+
+public function MsgItemDeleted () {
+  echo "
+  <div class='container'>
+    <h2 class='alert'><span class='material-icons'>check_box</span> Item product succesfully removed from your cart !</h2>
+  </div>";
+}
+
+public function MsgOrderValidated ($ticket) {
+  echo "
+  <div class='container'>
+  <div class='box'>
+    <h2 class='success'><span class='material-icons'>check_box</span> Cart reservation validated !</h2>
+    <h3>Get your order number to easily claim your package at shop reception :</h3>
+    <h1><span class='material-icons'>vpn_key</span> <b class='success'>&laquo; $ticket &raquo;</b></h1>
+    </div>
+  </div>";
 }
 
 /* end of output for html document */
