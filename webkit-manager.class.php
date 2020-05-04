@@ -107,14 +107,14 @@ public function FormCommand () {
 }
 
 public function MsgItemDeleted () {
-  echo "
+  return "
   <div class='container'>
     <h2 class='alert'><span class='material-icons'>check_box</span> Item product succesfully removed from your cart !</h2>
   </div>";
 }
 
 public function MsgOrderValidated ($ticket) {
-  echo "
+  return "
   <div class='container'>
   <div class='box'>
     <h2 class='success'><span class='material-icons'>check_box</span> Cart reservation validated !</h2>
@@ -123,6 +123,10 @@ public function MsgOrderValidated ($ticket) {
     <h1><span class='material-icons'>local_offer</span> <b class='success'>#".mb_strtoupper($ticket)."</b></h1>
     </div>
   </div>";
+}
+
+public function Content ( $content ) {
+  echo $content;
 }
 
 /* end of output for html document */

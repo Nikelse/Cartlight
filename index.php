@@ -11,5 +11,6 @@ require_once("PHP/define.project.php");
 // var_dump($DATAS);
 // var_dump($_SESSION['CART']);
 // session_destroy();
+//var_dump($_COOKIE);
 
 ?>

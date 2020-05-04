@@ -19,7 +19,7 @@ public function StartHTML () {
   <!doctype html>
   <html>
     <head>
-      <title> ".$GLOBALS['CONFIG']['WebName']." &bull; Reservation list</title>
+      <title> ".$GLOBALS['CONFIG']['WebName']." &bull; Reservation</title>
       <link href='"._FILES_."/style.css' type='text/css' rel='stylesheet' />
     </head>
   <body>
@@ -29,12 +29,18 @@ public function StartHTML () {
         <a href='".$GLOBALS['CONFIG']['WebSiteUrl']."'>
         ".$GLOBALS['CONFIG']['WebName']."</a> &bull; Reservation list
       </h1>
-      <i><b>Seller place :</b> retrieve place ordered by customers</i>
+      <i><b>Customer space :</b> retrieve your placed order</i>
     </div>
     <div id='cartsection' class='box right'>
-      <h1><i class='material-icons'>local_offer</i> ORDERS</h1>
+      <h1>
+      <a href='?cart-manager'><i class='material-icons'>shopping_cart</i></a>
+      <i class='material-icons'>local_offer</i> MY ORDERS</h1>
     </div>
   </div>";
+}
+
+public function Content ( $content ) {
+  echo $content;
 }
 
 /* end of output for html document */

@@ -7,14 +7,14 @@ require_once( _SOURCES_ . "/cart-manager.class.php" );
 $CM = new CartManager();
 $WEBKIT = new Webkit();
 
-$WEBKIT->StartHTML();
+$OUTPUT = NULL;
 
 /* delete item from cart */
 if ( isset($_GET['delpdt']) && is_numeric($_GET['delpdt'])
 && array_key_exists($_GET['delpdt'], $_SESSION['CART']) ) {
 
     $CM->DeleteCartProduct( $_GET['delpdt'] );
-    $WEBKIT->MsgItemDeleted();
+    $OUTPUT = $WEBKIT->MsgItemDeleted();
 
   }
 /* cart reservation options */
@@ -23,11 +23,14 @@ else if (isset($_GET['placeorder']) && sizeof($_SESSION['CART'])) {
 
     $ticket = $CM->ExportCartData();
     $CM->ResetCart();
-    $WEBKIT->MsgOrderValidated($ticket);
+    if ($GLOBALS['CONFIG']['ExportCookie']) $CM->CookieSave($ticket['full']);
+    $OUTPUT = $WEBKIT->MsgOrderValidated($ticket['number']);
 
     }
   }
 
+$WEBKIT->StartHTML();
+$WEBKIT->Content($OUTPUT);
 $WEBKIT->ShowCartDetails( $DATAS, $_SESSION['CART'] );
 $WEBKIT->EndHTML();
 

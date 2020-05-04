@@ -21,7 +21,7 @@ Cart management - on the fly - with no database and no authentification
 ### Update changelog
 v1.2 :
 - array key name collection ID from csv header
-- initiate reservation list for seller
+- initiate reservation list for customer
 
 v1.1 :
 - export cart's data in csv for reservation
@@ -33,3 +33,4 @@ v1.1 :
 - modify quantity in the Manager
 - easier installation
 - email confirmation
+- reservation module for seller management

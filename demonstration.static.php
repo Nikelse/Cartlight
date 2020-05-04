@@ -21,7 +21,7 @@ public static function CreateObjectListForm ( $objects ) {
 
     <div class='box two'>
       <h1><a href='".$GLOBALS['CONFIG']['WebSiteUrl']."'>".$GLOBALS['CONFIG']['WebName']."</a> &bull; Product list demonstration</h1>
-      <i><b>Customer space :</b> select product and quantity to add in your cart :</i>
+      <i><b>Customer space :</b> select product and quantity to add in your cart</i>
     </div>
 
     <div id='cartsection' class='box right'>

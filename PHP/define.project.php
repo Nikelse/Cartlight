@@ -38,7 +38,7 @@ else if (isset($_GET['cart-manager'])) {
   }
 /* reservation controller */
 else if (isset($_GET['reservation-manager']) && $GLOBALS['CONFIG']['Reservation']) {
-  require_once( _SOURCES_ . "/reservation-manager.controller.php" );
+  require_once( _SOURCES_ . "/reservation.controller.php" );
   }
 
 /* DEMONSTRATION loading default package for example of use
