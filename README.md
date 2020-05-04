@@ -1,18 +1,28 @@
 # eShopCart lightweight
 
 Cart management - on the fly - with no database and no authentification
-- Product list importation from .csv file loading
+- Product list importation from custom .csv file loading
 - Cart storage in the client session using cookies
 - Place order save and export on the disk and/or via email options
 
 ### Requirement
-- Server side : PHP 7.2 / Apache
+- Server side : PHP 7.2
+- Client side : HTML5 / CSS3 / Javascript
 
-### Configuration Set up
-- CONFIG/config.inc.php (set up for the server)
-- CONFIG/objects.csv (contain datas see example file structure in project )
+### Configuration
+- CONFIG/config.inc.php (server set up)
+- CONFIG/objects.csv for example (contain datas see example file structure in project )
+
+### CSV File informations
+- separator with ; (semicolon)
+- first row default heading name  : ID | NAME | PRICE | CATEGORY | DESCRIPTION
+- possible to set custom vars by adding after the default
 
 ### Update changelog
+v1.2 :
+- array key name collection ID from csv header
+- initiate reservation list for seller
+
 v1.1 :
 - export cart's data in csv for reservation
 - material icon webkit import
@@ -22,3 +32,4 @@ v1.1 :
 ### Todo
 - modify quantity in the Manager
 - easier installation
+- email confirmation

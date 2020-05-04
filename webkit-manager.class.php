@@ -1,10 +1,11 @@
 <?php
 /* eShopCart - Cart Webkit template for Manager
+* customer section
 * list product and quantity of item collected, possible remove from cart
 * calculate the global price to place order
 * author @NikelseDev */
 
-class WebkitManager {
+class Webkit {
 
 public $money = null;
 
@@ -25,10 +26,16 @@ public function StartHTML () {
   <div id='navbar' class='container'>
     <div class='box'>
       <h1><a href='".$GLOBALS['CONFIG']['WebSiteUrl']."'>".$GLOBALS['CONFIG']['WebName']."</a> &bull; Cart Management</h1>
-      <span class='material-icons'>done</span> <i>Confirm your cart list of product and place order for reservation :</i>
+      <i><b>Customer space :</b> confirm your cart list of product and place order for reservation :</i>
     </div>
     <div id='cartsection' class='box right'>
-      <h1><i class='material-icons'>shopping_cart</i> MY CART (<span name='cartstats' id='cartstats'>".sizeof($_SESSION['CART'])."</span>)</h1>
+      <h1>
+        <i class='material-icons'>shopping_cart</i>
+        MY CART (<span name='cartstats' id='cartstats'>".sizeof($_SESSION['CART'])."</span>)
+        ".(($GLOBALS['CONFIG']['Reservation'])?
+          "<a href='?reservation-manager' title='Reservation Manager'>
+          <i class='material-icons'>local_offer</i></a>" : null)."
+      </h1>
     </div>
   </div>";
 }
@@ -42,18 +49,18 @@ public function ShowCartDetails ( $datas_product, $datas_cart ) {
 
   foreach ($datas_cart as $K => $V) {
     $PRODUCT = $datas_product[ $V['id-product'] ];
-    $SUM = $V['qty-product'] * floatval($PRODUCT[2]);
+    $SUM = $V['qty-product'] * floatval($PRODUCT['PRICE']);
 
     $out .= "
     <div class='container col'>
       <div class='box'>
-        <h2>&bull; ".$PRODUCT[1]." :
+        <h2>&bull; ".$PRODUCT['NAME']." :
           <a href='?cart-manager&delpdt=$K'><span class='material-icons' title='remove item'>delete_forever</span></a>
         </h2>
       </div>
       <div class='box right'>
         <h2><i>".$V['qty-product']." x "
-        .number_format(floatval($PRODUCT[2]),2)."$this->money</i> = "
+        .number_format(floatval($PRODUCT['PRICE']),2)."$this->money</i> = "
         .( number_format($SUM,2) )."$this->money</h2>
       </div>
     </div>";
@@ -111,8 +118,9 @@ public function MsgOrderValidated ($ticket) {
   <div class='container'>
   <div class='box'>
     <h2 class='success'><span class='material-icons'>check_box</span> Cart reservation validated !</h2>
+    <br />
     <h3>Get your order number to easily claim your package at shop reception :</h3>
-    <h1><span class='material-icons'>vpn_key</span> <b class='success'>&laquo; $ticket &raquo;</b></h1>
+    <h1><span class='material-icons'>local_offer</span> <b class='success'>#".mb_strtoupper($ticket)."</b></h1>
     </div>
   </div>";
 }
@@ -121,8 +129,9 @@ public function MsgOrderValidated ($ticket) {
 public function EndHTML () {
   echo "
       <hr />
-      <div class='right'><a href='https://twitter.com/NikelseDev'>@NikelseDev</a></div>
+      <div class='box right'><a href='https://twitter.com/NikelseDev'>@NikelseDev</a></div>
       <script src='https://code.jquery.com/jquery-3.5.0.min.js' type='text/javascript'></script>
+
     </body>
   </html>";
   }
