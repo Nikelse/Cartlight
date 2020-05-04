@@ -17,6 +17,7 @@ $CONFIG = array (
   "ModuleEnable"    => true,
   "Error_Report"    => true,
   "Demonstration"   => true,
+  "Reservation"     => false,
 
   "ExportMail"      => false,
   "ExportOrder"     => true,
