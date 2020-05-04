@@ -1,5 +1,6 @@
 <?php
 /* eShopCart - Cart module
+* customer section
 * product and quantity add or update in the cart session
 * author @NikelseDev */
 
@@ -23,7 +24,7 @@ if (isset($_POST['id-product']) && is_numeric($_POST['id-product'])
       }
     }
   else {
-    /* no existent product id detected then insert a new one with quantity into the cart */
+    /* no product occurence id detected then insert a new one with quantity into the cart */
     array_push($_SESSION['CART'],
       array (
         "id-product" => intval($_POST['id-product']),

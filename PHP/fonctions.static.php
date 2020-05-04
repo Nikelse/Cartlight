@@ -11,11 +11,18 @@ public static function ReadObjectDatas ($path) {
   $row = 1;
   /* read the csv source row by row */
   if (($handle = fopen($path, "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-
+    while (($data = fgetcsv($handle, 1024, ";")) !== FALSE) {
       /* first row is the header so ignore at loading */
       if ($row > 1) {
-        $datas[$row-1] = $data;
+        $tab = array();
+        foreach ($data as $k => $v) {
+          $tab[$index[$k]] = $v;
+        }
+        $datas[$row-1] = $tab;
+        }
+      /* set the collection heading name for array */
+      else {
+        $index = $data;
         }
       $row++;
       }

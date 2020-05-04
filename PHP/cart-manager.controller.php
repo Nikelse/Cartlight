@@ -5,7 +5,7 @@ require_once("webkit-manager.class.php");
 require_once( _SOURCES_ . "/cart-manager.class.php" );
 
 $CM = new CartManager();
-$WEBKIT = new WebkitManager();
+$WEBKIT = new Webkit();
 
 $WEBKIT->StartHTML();
 

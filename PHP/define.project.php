@@ -1,5 +1,5 @@
 <?php
-/* eShopCart - Package loading root module
+/* eShopCart - Package root module loading
 * author @NikelseDev */
 
 namespace eShopCart;
@@ -32,8 +32,13 @@ if ( !isset($_SESSION['CART']) ) { $_SESSION['CART'] = array(); }
 if (isset($_GET['cart-module'])) {
   require_once( _SOURCES_ . "/cart-module.ajax.php" );
   }
+/* manager controller */
 else if (isset($_GET['cart-manager'])) {
   require_once( _SOURCES_ . "/cart-manager.controller.php" );
+  }
+/* reservation controller */
+else if (isset($_GET['reservation-manager']) && $GLOBALS['CONFIG']['Reservation']) {
+  require_once( _SOURCES_ . "/reservation-manager.controller.php" );
   }
 
 /* DEMONSTRATION loading default package for example of use
@@ -45,7 +50,6 @@ else if ($GLOBALS['CONFIG']['Demonstration']) {
 
   /* DEMO create a list of product loaded from source file product */
   \Demonstration::CreateObjectListForm($DATAS);
-
   }
 
 ?>
