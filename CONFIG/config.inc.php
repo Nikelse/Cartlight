@@ -17,9 +17,11 @@ $CONFIG = array (
   "ModuleEnable"    => true,
   "Error_Report"    => true,
   "Demonstration"   => true,
-  "Reservation"     => false,
+  "Reservation"     => true,
 
+  "ExportCookie"    => true,
   "ExportMail"      => false,
+
   "ExportOrder"     => true,
   "Export_Path"     => "FILES/ExportCart/",
 
