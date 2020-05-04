@@ -34,6 +34,7 @@ $PRODUCT = array (
   "File_Product"          => "objects.csv",
 
   "Money_Symbol"          => "€",
+  
   "Max_Product_Quantity"  => 99
 
 );
