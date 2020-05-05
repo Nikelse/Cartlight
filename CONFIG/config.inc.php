@@ -6,8 +6,8 @@
 
 $CONFIG = array (
 
-  "WebSiteUrl"      => "http://localhost:8080/ESHOPCART/",
-  "WebName"         => "eShopCart",
+  "WebSiteUrl"      => "http://localhost:8080/CARTLIGHT/",
+  "WebName"         => "CARTLIGHT",
   "MailContact"     => "contact@nikelse.net",
 
   "Charset"         => "UTF-8",
@@ -24,6 +24,8 @@ $CONFIG = array (
 
   "ExportOrder"     => true,
   "Export_Path"     => "FILES/ExportCart/",
+  "ExportOrderName" => "Order-",
+  "ExportOrderExt"  => ".csv",
 
   "Image_Path"      => "MEDIAS/Images/"
 
@@ -34,7 +36,7 @@ $PRODUCT = array (
   "File_Product"          => "objects.csv",
 
   "Money_Symbol"          => "€",
-  
+
   "Max_Product_Quantity"  => 99
 
 );
