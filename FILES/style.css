@@ -69,6 +69,10 @@ overflow-wrap: break-word;
   flex: auto;
 }
 
+.one {
+  flex-basis: 60%;
+}
+
 .two {
   flex-basis: 40%;
 }
