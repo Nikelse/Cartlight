@@ -5,10 +5,10 @@
 class Fonctions {
 
 /* read csv source file (with separator) of objects data */
-public static function ReadObjectDatas ($path) {
-
+public static function ReadObjectDatas ( $path ) {
   $datas = array();
   $row = 1;
+
   /* read the csv source row by row */
   if (($handle = fopen($path, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1024, ";")) !== FALSE) {
@@ -17,7 +17,7 @@ public static function ReadObjectDatas ($path) {
         $tab = array();
         foreach ($data as $k => $v) {
           $tab[$index[$k]] = $v;
-        }
+          }
         $datas[$row-1] = $tab;
         }
       /* set the collection heading name for array */
@@ -33,6 +33,24 @@ public static function ReadObjectDatas ($path) {
     }
 
   }
+
+/* read csv of reservation id - quantity */
+public static function ReadReservationDatas ( $path ) {
+  $datas = array();
+  $row = 0;
+
+  /* read the csv source row by row */
+  if (($handle = fopen($path, "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1024, ";")) !== FALSE) {
+      $datas[$row] = $data;
+      $row++;
+      }
+    }
+  fclose($handle);
+
+  /* return array of objects loaded in csv source file */
+  return $datas;
+}
 
 }
 

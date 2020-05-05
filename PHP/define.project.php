@@ -37,7 +37,7 @@ else if (isset($_GET['cart-manager'])) {
   require_once( _SOURCES_ . "/cart-manager.controller.php" );
   }
 /* reservation controller */
-else if (isset($_GET['reservation-manager']) && $GLOBALS['CONFIG']['Reservation']) {
+else if (isset($_GET['reservation']) && $GLOBALS['CONFIG']['Reservation']) {
   require_once( _SOURCES_ . "/reservation.controller.php" );
   }
 

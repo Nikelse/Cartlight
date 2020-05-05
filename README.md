@@ -1,13 +1,13 @@
-# eShopCart lightweight
-
+# CARTLIGHT
 Cart management - on the fly - with no database and no authentification
 - Product list importation from custom .csv file loading
 - Cart storage in the client session using cookies
 - Place order save and export on the disk and/or via email options
+- Customer reservation listing
 
 ### Requirement
-- Server side : PHP 7.2
-- Client side : HTML5 / CSS3 / Javascript
+- Server side : PHP 7.2 / OOP / MVC
+- Client side : HTML5 / CSS3 / Javascript / Cookies
 
 ### Configuration
 - CONFIG/config.inc.php (server set up)
@@ -19,6 +19,10 @@ Cart management - on the fly - with no database and no authentification
 - possible to set custom vars by adding after the default
 
 ### Update changelog
+v1.3 :
+- customer cookie based reservation saving
+- reservation listing and menu integration
+
 v1.2 :
 - array key name collection ID from csv header
 - initiate reservation list for customer
@@ -30,6 +34,7 @@ v1.1 :
 - cart adding product animation
 
 ### Todo
+- add captcha validating
 - modify quantity in the Manager
 - easier installation
 - email confirmation

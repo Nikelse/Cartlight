@@ -33,7 +33,7 @@ public function StartHTML () {
         <i class='material-icons'>shopping_cart</i>
         MY CART (<span name='cartstats' id='cartstats'>".sizeof($_SESSION['CART'])."</span>)
         ".(($GLOBALS['CONFIG']['Reservation'])?
-          "<a href='?reservation-manager' title='Reservation Manager'>
+          "<a href='?reservation' title='Reservation Manager'>
           <i class='material-icons'>local_offer</i></a>" : null)."
       </h1>
     </div>

@@ -1,12 +1,21 @@
 <?php
-/* eShopCart - Seller Reservation
+/* eShopCart - Reservation
 * author @NikelseDev */
 
 class ReservationManager {
 
-public function __construct ( ) { }
+public $ORDERS = array();
 
+public function __construct ( ) {
+  $this->LoadCookie();
+ }
 
+public function LoadCookie () {
+  if (isset($_COOKIE['PlaceOrders']) && !empty($_COOKIE['PlaceOrders'])) {
+    $unserial = @unserialize($_COOKIE['PlaceOrders']);
+    $this->ORDERS = (!empty($unserial)) ? $unserial : array();
+  }
+}
 
 }
 

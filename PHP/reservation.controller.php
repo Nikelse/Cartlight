@@ -9,9 +9,20 @@ $RM = new ReservationManager();
 $WEBKIT = new Webkit();
 $OUTPUT = NULL;
 
-$WEBKIT->StartHTML();
-$WEBKIT->Content($OUTPUT);
+if ( isset($_GET['placeorder']) && !empty($_GET['placeorder']) ) {
 
+  $path = $GLOBALS['CONFIG']['Export_Path'].$GLOBALS['CONFIG']['ExportOrderName'].strval($_GET['placeorder']).$GLOBALS['CONFIG']['ExportOrderExt'];
+  if (file_exists( $path )) {
+
+    $OUTPUT = $WEBKIT->DataCartDetails( $DATAS, Fonctions::ReadReservationDatas( $path ) );
+
+  }
+}
+
+$OUTPUT .= $WEBKIT->ShowListOrder($RM->ORDERS);
+
+$WEBKIT->StartHTML(sizeof($RM->ORDERS));
+$WEBKIT->Content($OUTPUT);
 $WEBKIT->EndHTML();
 
 ?>
